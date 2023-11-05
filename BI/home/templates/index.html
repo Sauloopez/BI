@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="jumbotron">
+        <h1 class="display-5">Welcome to the Web-Page Made with Django</h1>
+        <p class="lead">This page is created for the final project of BI</p>
+        <hr class="my-4">
+        <h2 class="mb-3">Creators:</h2>
+        <ul>
+            <li>Farid Yuseff Awad Plazas</li>
+            <li>Juan Sebastián Pérez Agudelo</li>
+            <li>Saul Esteban López Bermúdez</li>
+        </ul>
+        {% if not user.is_authenticated %}
+        <p class="mt-4">To access at the information, please
+            <a href="{% url 'signup' %}">sign up</a> or <a href="{% url 'login' %}">log in</a>.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}

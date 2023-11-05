@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center" style="height: 80vh;">
+    <form method="post" class="">
+    {% csrf_token %}
+    <div class="form-label">
+        {{ form.username.label_tag }}
+    </div>
+    <div class="mb-3">
+        {{ form.username }}
+    </div>
+    <div class="form-label">
+        {{ form.password.label_tag }}
+    </div>
+    <div class="mb-3">
+        {{ form.password }}
+    </div>
+    <button type="submit" class="btn btn-primary w-100 mb-3">Submit</button>
+    </form>
+</div>
+{% endblock content %}
