@@ -4,6 +4,7 @@
 <div class="d-flex justify-content-center align-items-center" style="height: 80vh;">
     <form method="post" class="">
     {% csrf_token %}
+    <input type="hidden" name="next" value="{{ request.GET.next }}">
     <div class="form-label">
         {{ form.username.label_tag }}
     </div>

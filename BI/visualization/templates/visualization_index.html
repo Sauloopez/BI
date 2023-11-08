@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<p>You can visualize the data thanks to NASA.gov</p>
+<div class="container">
+    <div class="table-responsive">
+        <table id="table-results" class="table table-sm text-center"></table>
+    </div>
+    <div id="pagination" class="d-flex justify-content-center">
+        <button id="prevPage" class="btn btn-primary mr-2">Previous</button>
+        <button id="nextPage" class="btn btn-primary">Next</button>
+    </div>
+</div>
+<script src="{% static 'visualization/fetch.js' %}"></script>
+{% endblock %}

@@ -10,6 +10,9 @@ class LoginForm(forms.Form):
         label='Password',
         widget=forms.PasswordInput(attrs={'class': 'form-control', 'id': 'password'})
     )
+    next = forms.CharField(
+        widget=forms.TextInput(attrs={'id': 'next'})
+    )
 
 
 class RegistryForm(forms.Form):

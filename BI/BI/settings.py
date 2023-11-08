@@ -21,12 +21,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure--3$y0fqh)q%1pc&7!jghk62b1_v85$@147ul9bphhhm7lbg8se'
-
+SECRET_KEY = 'jasjcnak28402jdksmcmsdhsiey2840/jskanxjs8ertuahsks'
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = False
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['bi-class.co', '127.0.0.1']
 
 
 # Application definition
@@ -38,10 +40,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'home',
     'regression',
     'logistic',
-    'information'
+    'information',
+    'visualization'
 ]
 
 MIDDLEWARE = [
@@ -80,8 +84,10 @@ WSGI_APPLICATION = 'BI.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'BI',
+        'PASSWORD': 'Yaegar290.',
+        'USER':'saulopez'
     }
 }
 
@@ -123,6 +129,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
+]
+STATIC_ROOT= '/home/saulopez/DjangoBI/static/'
 
 
 # Default primary key field type

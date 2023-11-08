@@ -6,17 +6,18 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from .customForms import LoginForm, RegistryForm
 
+
 # Create your views here.
 
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'home_index.html')
 
 
 def signup(request):
     method = request.method
     if method == 'GET':
-        return render(request, 'signup.html',{
+        return render(request, 'signup.html', {
             'form': RegistryForm
         })
     elif method == 'POST':
@@ -29,7 +30,7 @@ def signup(request):
                 new_user.save()
                 return redirect('/login/')
             except IntegrityError:
-                return render(request, 'signup.html',{
+                return render(request, 'signup.html', {
                     'form': RegistryForm,
                     'error': 'User Already Exists'
                 })
@@ -40,8 +41,12 @@ def signup(request):
 
 
 def login_view(request):
-    if request.method == 'POST':
-        data = request.POST
+    if request.method == 'GET':
+        form = AuthenticationForm()
+        return render(request, 'login.html', {
+            'form': form
+        })
+    elif request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
@@ -49,11 +54,4 @@ def login_view(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('/')
-
-    else:
-        form = AuthenticationForm()        
-    return render(request, 'login.html', {
-        'form': form
-    })
-    
+                return redirect(form.cleaned_data['next'])
