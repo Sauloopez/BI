@@ -7,7 +7,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 
-
+# url = 'http://127.0.0.1:8000/nasa-data'
 url = 'https://bi-class.co/nasa-data'
 
 response = requests.get(url, verify=False)

@@ -82,6 +82,8 @@ WSGI_APPLICATION = 'BI.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# cambiar el motor de base de datos a django.db.backends.sqlite3
+#eliminar el resto del contenido del diccionario
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
