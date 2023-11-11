@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'regression',
     'logistic',
     'information',
-    'visualization'
+    'visualization',
 ]
 
 MIDDLEWARE = [

@@ -28,7 +28,7 @@ def signup(request):
                 new_user = User.objects.create_user(username=form.cleaned_data['username'],
                                                     password=form.cleaned_data['password1'])
                 new_user.save()
-                return redirect('/login/')
+                return redirect('/accounts/login/')
             except IntegrityError:
                 return render(request, 'signup.html', {
                     'form': RegistryForm,
@@ -55,3 +55,8 @@ def login_view(request):
             if user is not None:
                 login(request, user)
                 return redirect(form.cleaned_data['next'])
+        else:
+            print(form.errors)
+            return render(request, 'login.html', {
+                'form': form,
+            })

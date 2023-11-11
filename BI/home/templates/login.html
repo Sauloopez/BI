@@ -4,7 +4,11 @@
 <div class="d-flex justify-content-center align-items-center" style="height: 80vh;">
     <form method="post" class="">
     {% csrf_token %}
+    {% if request.GET.next%}
     <input type="hidden" name="next" value="{{ request.GET.next }}">
+    {% else %}
+    <input type="hidden" name="next" value="/">
+    {% endif %}
     <div class="form-label">
         {{ form.username.label_tag }}
     </div>

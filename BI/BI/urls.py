@@ -31,5 +31,5 @@ urlpatterns = [
     path('regression/', regression_index, name='regression'),
     path('logistic/', logistic_index, name='logistic'),
     path('nasa-data/', NASADataView.as_view(), name='nasa-data'),
-    path('visualization/', visualization_index, name='visualization')
+    path('visualization/', visualization_index, name='visualization'),
 ]
