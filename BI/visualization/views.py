@@ -9,7 +9,7 @@ class NASADataView(APIView):
     pagination_class = PageNumberPagination
 
     def get(self, request):
-        url = ("""https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M,T2MDEW,T2MWET,TS,T2M_RANGE,T2M_MAX,T2M_MIN&community=RE&longitude=-73.62664&latitude=4.142&start=20200101&end=20230630&format=json""")
+        url = ("""https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M,T2MDEW,T2MWET,TS,T2M_RANGE,T2M_MAX,T2M_MIN&community=RE&longitude=-73.62664&latitude=4.142&start=20191030&end=20231030&format=json""")
         response = requests.get(url)
         data = response.json()
 
