@@ -13,8 +13,8 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVR
 from sklearn.model_selection import GridSearchCV
 
-# url = 'http://127.0.0.1:8000/nasa-data'
-url = 'https://bi-class.co/nasa-data'
+url = 'http://127.0.0.1:8000/nasa-data'
+#url = 'https://bi-class.co/nasa-data'
 
 response = requests.get(url, verify=False)
 
@@ -88,7 +88,7 @@ mse_test = mean_squared_error(y_test, y_test_pred)
 last_date = datetime.strptime("20230701", "%Y%m%d")
 
 # Fecha actual
-act = datetime.strptime("20241110", "%Y%m%d")
+act = datetime.strptime("20240501", "%Y%m%d")
 
 # Lista para almacenar las fechas generadas
 new_dates = []
