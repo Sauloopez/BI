@@ -20,6 +20,7 @@ from regression.views import index as regression_index
 from logistic.views import index as logistic_index
 from visualization.views import index as visualization_index
 from visualization.views import NASADataView
+from regression.views import PredictionSRV
 from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
@@ -31,5 +32,6 @@ urlpatterns = [
     path('regression/', regression_index, name='regression'),
     path('logistic/', logistic_index, name='logistic'),
     path('nasa-data/', NASADataView.as_view(), name='nasa-data'),
+    path('predictions-srv/', PredictionSRV.as_view(), name='predictions-srv'),
     path('visualization/', visualization_index, name='visualization'),
 ]

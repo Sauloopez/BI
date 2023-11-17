@@ -1,17 +1,11 @@
-from django.http import JsonResponse
 from django.shortcuts import render
 from rest_framework.views import APIView
-from rest_framework.pagination import PageNumberPagination
-import requests
 from rest_framework.response import Response
+from .models import Data
 
 class NASADataView(APIView):
-    pagination_class = PageNumberPagination
-
     def get(self, request):
-        url = ("""https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M,T2MDEW,T2MWET,TS,T2M_RANGE,T2M_MAX,T2M_MIN&community=RE&longitude=-73.62664&latitude=4.142&start=20191030&end=20231030&format=json""")
-        response = requests.get(url)
-        data = response.json()
+        data = Data.get_data()
 
         t2m_values = data.get('properties', {}).get('parameter', {}).get('T2M', {})
         t2max_data = data.get('properties', {}).get('parameter', {}).get('T2M_MAX', {})
@@ -44,14 +38,13 @@ class NASADataView(APIView):
                 pages.append(current_page)
                 current_page = []
                 count_pages = 0
-
+        
+        #If current_page has rows add to pages
         if current_page:
             pages.append(current_page)
-
+        print(pages)
         # Devuelve todas las páginas enumeradas en formato JSON
         return Response(pages)
-
-
 
 def index(request):
     return render(request, 'visualization_index.html')
