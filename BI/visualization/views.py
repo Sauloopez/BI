@@ -42,7 +42,6 @@ class NASADataView(APIView):
         #If current_page has rows add to pages
         if current_page:
             pages.append(current_page)
-        print(pages)
         # Devuelve todas las páginas enumeradas en formato JSON
         return Response(pages)
 

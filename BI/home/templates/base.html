@@ -14,6 +14,7 @@
       <script src="{% static "rest_framework/js/ajax-form.js" %}"></script>
       <script src="{% static "rest_framework/js/bootstrap.min.js" %}"></script>
       <script src="{% static "rest_framework/js/prettify-min.js" %}"></script>
+      <script src="{% static "prediction/node_modules/chart.js/dist/chart.umd.js" %}"></script>
     <style>
         .content{
             margin-bottom: 70px;
@@ -26,7 +27,7 @@
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{% url 'index' %}">Index</a>
-                <a href="{% url 'regression' %}" class="navbar-brand">Regression</a>
+                <a href="{% url 'prediction' %}" class="navbar-brand">Prediction</a>
                 <a href="{% url 'logistic' %}" class="navbar-brand">Logistic</a>
                 <a href="{% url 'visualization' %}" class="navbar-brand">Data Visualization</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"

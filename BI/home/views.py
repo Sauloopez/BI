@@ -1,7 +1,6 @@
-from django.core.exceptions import ValidationError
 from django.db import IntegrityError
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from .customForms import LoginForm, RegistryForm
@@ -56,7 +55,8 @@ def login_view(request):
                 login(request, user)
                 return redirect(form.cleaned_data['next'])
         else:
-            print(form.errors)
             return render(request, 'login.html', {
                 'form': form,
+                'error' : 'Credenciales Inválidas'
             })
+    pass

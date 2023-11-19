@@ -38,7 +38,7 @@ $(document).ready(() => {
             tableBody.append(row);
         });
 
-        table.append(tableHead);
+        
         table.append(tableBody);
     }
 
