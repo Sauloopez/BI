@@ -2,26 +2,33 @@
 
 {% block content %}
 <div class="d-flex justify-content-center align-items-center" style="height: 80vh;">
-    <form method="post" class="">
-    {% csrf_token %}
-    {% if request.GET.next%}
-    <input type="hidden" name="next" value="{{ request.GET.next }}">
-    {% else %}
-    <input type="hidden" name="next" value="/">
-    {% endif %}
-    <div class="form-label">
-        {{ form.username.label_tag }}
+    <div class="col-md-3 justify-content-center">
+        {% if error %}
+            <div class="alert alert-danger text-center" role="alert">
+                {{ error }}
+            </div>
+        {% endif %}
+        <form method="post" >
+        {% csrf_token %}
+        {% if request.GET.next%}
+        <input type="hidden" name="next" value="{{ request.GET.next }}">
+        {% else %}
+        <input type="hidden" name="next" value="/">
+        {% endif %}
+        <div class="form-label">
+            {{ form.username.label_tag }}
+        </div>
+        <div class="mb-3">
+            {{ form.username }}
+        </div>
+        <div class="form-label">
+            {{ form.password.label_tag }}
+        </div>
+        <div class="mb-3">
+            {{ form.password }}
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;">Submit</button>
+        </form>
     </div>
-    <div class="mb-3">
-        {{ form.username }}
-    </div>
-    <div class="form-label">
-        {{ form.password.label_tag }}
-    </div>
-    <div class="mb-3">
-        {{ form.password }}
-    </div>
-    <button type="submit" class="btn btn-primary w-100 mb-3">Submit</button>
-    </form>
 </div>
 {% endblock content %}

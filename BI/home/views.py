@@ -40,12 +40,7 @@ def signup(request):
 
 
 def login_view(request):
-    if request.method == 'GET':
-        form = AuthenticationForm()
-        return render(request, 'login.html', {
-            'form': form
-        })
-    elif request.method == 'POST':
+    if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
@@ -54,9 +49,18 @@ def login_view(request):
             if user is not None:
                 login(request, user)
                 return redirect(form.cleaned_data['next'])
+            else:
+                return render(request, 'login.html', {
+                    'form': form,
+                    'error' : 'Invalid Credentials'
+                })
         else:
             return render(request, 'login.html', {
                 'form': form,
-                'error' : 'Credenciales Inválidas'
+                'error' : 'Invalid Form'
             })
-    pass
+    else:
+        form = LoginForm()
+        return render(request, 'login.html', {
+            'form': form
+        })

@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'home',
     'prediction',
-    'logistic',
     'information',
     'visualization',
     'rest_framework.authtoken'
