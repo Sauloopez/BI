@@ -1,0 +1,38 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container mt-5">
+    <h1 class="display-5">
+        Prediction with Long-Short Time Memory Neural Network
+    </h1>
+    <p class="lead">This prediction uses a LSTM neural network.</p>
+    <p class="lead">
+        Long Short-Term Memory (LSTM) networks, a type of recurrent neural
+        network (RNN) implemented in TensorFlow, are designed to effectively
+        capture long-range dependencies in sequential data. LSTMs are equipped
+        with memory cells that maintain information over time and specialized
+        gates that regulate the flow of information, making them particularly
+        well-suited for tasks such as time series forecasting, natural language
+        processing, and speech recognition. By addressing the vanishing gradient
+        problem common in standard RNNs, LSTMs can learn patterns in data
+        sequences that span long intervals, thus improving the model's
+        predictive performance in complex scenarios. For more in-depth
+        information, you can refer to the [TensorFlow LSTM
+        documentation](https://www.tensorflow.org/api_docs/python/tf/keras/layers/LSTM).
+    </p>
+    <p class="lead">
+        This process is very slow, please be patient. The cause is directly with
+        the procesing, is loaded with 32 epoches
+    </p>
+    <hr class="my-4" />
+    <p class="lead">
+        In the next <a href="https://chartjs.org">chart</a> you can visualize
+        the original data and the predictions of LSTM RNN
+    </p>
+    <canvas id="graphic"></canvas>
+    <h2 class="mb-3">Mean Squared Errors</h2>
+    <p class="lead">The mean squared error for the predictions, are:</p>
+    <ul id="MSEs"></ul>
+</div>
+
+{% load static%}
+<script type="module" src="{% static 'prediction/fetch_lstm.js' %}"></script>
+{% endblock %}

@@ -16,10 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from home.views import index, signup, login_view, logout
-from prediction.views import index as prediction_index
+from prediction.views import index as prediction_index, lstm_prediction
 from visualization.views import index as visualization_index
 from visualization.views import NASADataView
-from prediction.views import PredictionSVR
+from prediction.views import PredictionSVR, PredictionLSTM
 from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
@@ -28,8 +28,10 @@ urlpatterns = [
     path('accounts/signup/', signup, name='signup'),
     path('accounts/login/', login_view, name='login'),
     path('accounts/logout/', LogoutView.as_view(), name='logout'),
-    path('prediction/', prediction_index, name='prediction'),
+    path('prediction/', prediction_index, name='prediction-svr'),
+    path('prediction-lstm/', lstm_prediction, name='prediction-lstm'),
     path('nasa-data/', NASADataView.as_view(), name='nasa-data'),
     path('predictions-svr/', PredictionSVR.as_view(), name='predictions-svr'),
+    path('predictions-lstm/', PredictionLSTM.as_view(), name='predictions-lstm'),
     path('visualization/', visualization_index, name='visualization'),
 ]

@@ -1,13 +1,25 @@
-{% extends 'base.html' %}
-
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <div class="container mt-5">
     <h1 class="display-5">Prediction with the SVR Model</h1>
     <p class="lead">This prediction uses the SVR Model.</p>
-    <p class="lead">SVR (Support Vector Regression) is a regression algorithm based on the same algorithms used by Support Vector Machines (SVM) to create classification models. Although there are some differences because the output of a regression is a real value and not a label. Which makes it very difficult to predict objective values. In the case of a regression there are infinite possibilities, compared to the limited number existing in classification problems.</p>
-    <hr class="my-4">
-    <p class="lead">In the next <a href="https://chartjs.org">chart</a> you can visualize the original data with the predictions of the SVR Model</p>
-    <p class="lead">The prediction has five months limit. This limitations is caused by computation level and variables</p>
+    <p class="lead">
+        SVR (Support Vector Regression) is a regression algorithm based on the
+        same algorithms used by Support Vector Machines (SVM) to create
+        classification models. Although there are some differences because the
+        output of a regression is a real value and not a label. Which makes it
+        very difficult to predict objective values. In the case of a regression
+        there are infinite possibilities, compared to the limited number
+        existing in classification problems.
+    </p>
+    <hr class="my-4" />
+    <p class="lead">
+        In the next <a href="https://chartjs.org">chart</a> you can visualize
+        the original data with the predictions of the SVR Model
+    </p>
+    <p class="lead">
+        The prediction has five months limit. This limitations is caused by
+        computation level and variables
+    </p>
     <canvas id="graphic"></canvas>
     <h2 class="mb-3">Mean Squared Errors</h2>
     <p class="lead">The mean squared error for the predictions, are:</p>

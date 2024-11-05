@@ -12,6 +12,10 @@ import json
 def index(request):
     return render(request, 'prediction_index.html')
 
+@login_required
+def lstm_prediction(req):
+    return render(req, 'prediction_lstm.html')
+
 class PredictionSVR(APIView):
     authentication_classes = [SessionAuthentication, BasicAuthentication]
     permission_classes = [IsAuthenticated]
@@ -28,6 +32,25 @@ class PredictionSVR(APIView):
             'mse_train':mse_train,
             'mse_test':mse_test
         }
-        
+
+        return Response(response)
+
+class PredictionLSTM(APIView):
+    authentication_classes = [SessionAuthentication, BasicAuthentication]
+    permission_classes = [IsAuthenticated]
+    def get(self, request):
+        df, mse_train, mse_test = Prediction.get_lstm_predictions()
+        df['Date'] = df['Date'].dt.strftime('%Y-%m-%d')
+
+
+        json_string = df.to_json(orient='records')
+
+        json_data = json.loads(json_string)
+        response={
+            'data':json_data,
+            'mse_train':mse_train,
+            'mse_test':mse_test
+        }
+
         return Response(response)
 pass

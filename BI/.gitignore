@@ -1,0 +1,9 @@
+# virtual environments
+.venv
+.env
+
+# python cache
+__pycache__
+
+# sqlite databases
+**.sqlite3
